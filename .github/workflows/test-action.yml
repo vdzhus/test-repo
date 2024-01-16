@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: echo "Test"
-      - run: echo -e "$SSH-KEY" > spot_private.key
+      - run: echo -e "$sshKey" > spot_private.key
         env:
-          SSH-KEY: ${{ secrets.SSH_KEY_DEV_CI }}
+          sshKey: ${{ secrets.SSH_KEY_DEV_CI }}
       - run: chmod 600 spot_private.key
       - run: ssh -i spot_private.key -o StrictHostKeyChecking=no -p 5557 root@91.237.240.41 'cat /etc/os-release'
