@@ -15,4 +15,5 @@ jobs:
           SSHKEY: ${{ secrets.SSH_KEY }}
       - run: cat spot_private.key
       - run: chmod 600 spot_private.key
+      - run: ls -la
       - run: ssh -i spot_private.key -o StrictHostKeyChecking=no -p 5557 root@91.237.240.41 'pwd'
