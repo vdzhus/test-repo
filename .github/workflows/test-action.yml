@@ -9,8 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - env: # Or as an environment variable
+          SSHKEY: ${{ secrets.SSH_KEY }}
       - run: echo "Test"
-      - run: echo -e "$SSH_KEY" > spot_private.key
+      - run: echo -e "$SSHKEY" > spot_private.key
       - run: cat spot_private.key
       - run: chmod 600 spot_private.key
       - run: ssh -i spot_private.key -o StrictHostKeyChecking=no -p 5557 root@91.237.240.41 'pwd'
