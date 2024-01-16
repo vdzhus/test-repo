@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: echo "Test"
-      - run: echo -e "$SS-HKEY" > spot_private.key
+      - run: echo -e "$SSH-KEY" > spot_private.key
         env:
           SSH-KEY: ${{ secrets.SSH_KEY }}
       - run: chmod 600 spot_private.key
