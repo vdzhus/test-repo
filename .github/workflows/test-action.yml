@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - env: # Or as an environment variable
+      - name: get env
+        env: # Or as an environment variable
           SSHKEY: ${{ secrets.SSH_KEY }}
       - run: echo "Test"
       - run: echo -e "$SSHKEY" > spot_private.key
