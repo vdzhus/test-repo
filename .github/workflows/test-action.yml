@@ -1,0 +1,15 @@
+name: build-development
+run-name: Build Development Env
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Test"
+      - run: echo -e "$SSH_KEY" > spot_private.key
+      - run: chmod 600 spot_private.key
+      - run: ssh -i spot_private.key -o StrictHostKeyChecking=no -p 5557 root@91.237.240.41 'pwd'
